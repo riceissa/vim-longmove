@@ -1,0 +1,19 @@
+*longmove.txt* Move more easily in buffers with long lines
+
+MAPPINGS                                        *longmove-mappings*
+
+                                                *longmove-gH*
+gH                      To screen line [count] from top of window (default:
+                        first screen line on the window) on the first non-blank
+                        character. Respects 'startofline' and 'scrolloff'.
+
+                                                *longmove-gM*
+gM                      To screen line of window, on the first non-blank
+                        character. Respects 'startofline'.
+
+                                                *longmove-gL*
+gL                      To screen line [count] from bottom of window (default:
+                        last screen line on the window) on the first non-blank
+                        character. Respects 'startofline' and 'scrolloff'.
+
+ vim:tw=78:et:ts=8:ft=help:norl:

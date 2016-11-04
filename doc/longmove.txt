@@ -8,7 +8,7 @@ gH                      To screen line [count] from top of window (default:
                         character. Respects 'startofline' and 'scrolloff'.
 
                                                 *longmove-gM*
-gM                      To screen line of window, on the first non-blank
+gM                      To middle screen line of window, on the first non-blank
                         character. Respects 'startofline'.
 
                                                 *longmove-gL*

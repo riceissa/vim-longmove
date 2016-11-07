@@ -81,7 +81,6 @@ function! s:gH(count, vis)
   if &startofline
     let l:cmd .= 'g^'
   endif
-  echom l:cmd
   exe l:cmd
 endfunction
 
@@ -106,8 +105,6 @@ function! s:gL(count, vis)
   if &startofline
     let l:cmd .= 'g^'
   endif
-  " echom l:cmd
-  " echom "DEBUG" winheight(0) winline() &scrolloff
   exe l:cmd
 endfunction
 

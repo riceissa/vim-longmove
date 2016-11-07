@@ -54,15 +54,12 @@ function! s:gH(vis)
     let l:c = l:c_max
   endif
   if l:amt > 0
-    " exe "normal! " . a:vis . l:amt . 'gk'
     let l:cmd .= l:amt . 'gk'
   endif
   if l:c > 0
-    " exe "normal! " . a:vis . l:c . 'gj'
     let l:cmd .= l:c . 'gj'
   endif
   if &startofline
-    " exe "normal! " . a:vis . 'g^'
     let l:cmd .= 'g^'
   endif
   exe l:cmd
@@ -81,15 +78,12 @@ function! s:gL(vis)
     let l:c = l:c_max
   endif
   if l:amt > 0
-    " exe ':normal! ' . l:amt . 'gj'
     let l:cmd .= l:amt . 'gj'
   endif
   if l:c > 0
-    " exe ':normal! ' . l:c . 'gk'
     let l:cmd .= l:c . 'gk'
   endif
   if &startofline
-    " exe ':normal! g^'
     let l:cmd .= 'g^'
   endif
   " echom l:cmd
@@ -106,15 +100,12 @@ function! s:gM(vis)
   let l:cmd = "normal! " . a:vis
   if l:amt > 0
     " Cursor is in the top half of window so go down.
-    " exe ':normal! ' . abs(l:amt) . 'gj'
     let l:cmd .= abs(l:amt) . 'gj'
   elseif l:amt < 0
     " Cursor is in the bottom half of window so go down.
-    " exe ':normal! ' . abs(l:amt) . 'gk'
     let l:cmd .= abs(l:amt) . 'gk'
   endif
   if &startofline
-    " exe ':normal! g^'
     let l:cmd .= 'g^'
   endif
   exe l:cmd

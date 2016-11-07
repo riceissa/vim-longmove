@@ -25,6 +25,7 @@ function! s:gH(vis)
   let l:amt = winline() - 1 - &scrolloff
   let l:c = v:count - 1 - &scrolloff
   let l:c_max = winheight(0) - 2 * &scrolloff - 1
+  let l:cmd = "normal! " . a:vis
   " If the count is too large, keep cursor inside the window. This better
   " emulates the behavior of H, e.g. 800H keeps the cursor in the window
   " without scrolling.
@@ -32,14 +33,18 @@ function! s:gH(vis)
     let l:c = l:c_max
   endif
   if l:amt > 0
-    :<C-U>exe "normal! " . a:vis . l:amt . 'gk'
+    " exe "normal! " . a:vis . l:amt . 'gk'
+    l:cmd .= l:amt . 'gk'
   endif
   if l:c > 0
-    :<C-U>exe "normal! " . a:vis . l:c . 'gj'
+    " exe "normal! " . a:vis . l:c . 'gj'
+    l:cmd .= l:c . 'gj'
   endif
   if &startofline
-    :<C-U>exe "normal! " . a:vis . 'g^'
+    " exe "normal! " . a:vis . 'g^'
+    l:cmd .= 'g^'
   endif
+  exe l:cmd
 endfunction
 
 function! s:gL()

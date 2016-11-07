@@ -31,15 +31,17 @@ vnoremap <silent> <script> <Plug>LongmoveVisualgL :<C-U>call <SID>gL("gv")<CR>
 
 function! s:gH(vis)
   if a:vis ==# "gv"
-    " When you run :normal, Vim changes winline() to the cursor position at
+    " When you run :normal!, Vim changes winline() to the cursor position at
     " the start of the visual selection. This is different from the actual
     " current cursor position if the actual cursor position was at the end of
     " the visual selection. You can verify this by entering visual mode,
     " moving to a different visual line, then typing
-    " :<C-U>echom winline()<CR>. Since Vim doesn't seem to provide a function
-    " to get the window line of the current cursor position, the only
-    " workaround I know of is to call gv to reselect the visual area and
-    " immediately check winline() in the same line.
+    "     :<C-U>echom winline()<CR>
+    " Since Vim doesn't seem to provide a function to get the window line of
+    " the current cursor position, the only workaround I know of is to call gv
+    " to reselect the visual area and immediately check winline() in the same
+    " line. Compare the above with the result of typing
+    "     :<C-U>exe 'normal! gv' | echom winline()<CR>
     exe "normal! " . a:vis | let l:amt = winline() - 1 - &scrolloff
   else
     let l:amt = winline() - 1 - &scrolloff

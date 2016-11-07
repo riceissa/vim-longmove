@@ -32,13 +32,13 @@ function! s:gH(vis)
     let l:c = l:c_max
   endif
   if l:amt > 0
-    exe "normal! " . a:vis . l:amt . 'gk'
+    :<C-U>exe "normal! " . a:vis . l:amt . 'gk'
   endif
   if l:c > 0
-    exe "normal! " . a:vis . l:c . 'gj'
+    :<C-U>exe "normal! " . a:vis . l:c . 'gj'
   endif
   if &startofline
-    exe "normal! " . a:vis . 'g^'
+    :<C-U>exe "normal! " . a:vis . 'g^'
   endif
 endfunction
 

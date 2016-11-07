@@ -9,25 +9,42 @@ endif
 if !hasmapto("<Plug>LongmoveVisualgH", "v") && "" == mapcheck("gH","v")
   vmap gH <Plug>LongmoveVisualgH
 endif
+if !hasmapto("<Plug>LongmoveVisualgH", "o") && "" == mapcheck("gH","o")
+  omap gH <Plug>LongmoveOperatorgH
+endif
+
 if !hasmapto("<Plug>LongmovegM", "n") && "" == mapcheck("gM","n")
   nmap gM <Plug>LongmovegM
 endif
 if !hasmapto("<Plug>LongmoveVisualgM", "v") && "" == mapcheck("gM","v")
   vmap gM <Plug>LongmoveVisualgM
 endif
+if !hasmapto("<Plug>LongmoveVisualgM", "o") && "" == mapcheck("gM","o")
+  omap gM <Plug>LongmoveOperatorgM
+endif
+
 if !hasmapto("<Plug>LongmovegL", "n") && "" == mapcheck("gL","n")
   nmap gL <Plug>LongmovegL
 endif
 if !hasmapto("<Plug>LongmoveVisualgL", "v") && "" == mapcheck("gL","v")
   vmap gL <Plug>LongmoveVisualgL
 endif
+if !hasmapto("<Plug>LongmoveVisualgL", "o") && "" == mapcheck("gL","o")
+  omap gL <Plug>LongmoveOperatorgL
+endif
 
 nnoremap <silent> <script> <Plug>LongmovegH :<C-U>call <SID>gH(v:count,"")<CR>
 vnoremap <silent> <script> <Plug>LongmoveVisualgH :<C-U>call <SID>gH(v:count,"gv")<CR>
+" omap <silent> <script> <Plug>LongmoveOperatorgH :<C-U>normal VgH<CR>
+onoremap <silent> <script> <Plug>LongmoveOperatorgH :<C-U>call <SID>gH(v:count,"")<CR>
+
 nnoremap <silent> <script> <Plug>LongmovegM :<C-U>call <SID>gM(v:count,"")<CR>
 vnoremap <silent> <script> <Plug>LongmoveVisualgM :<C-U>call <SID>gM(v:count,"gv")<CR>
+onoremap <silent> <script> <Plug>LongmoveOperatorgM :<C-U>call <SID>gM(v:count,"")<CR>
+
 nnoremap <silent> <script> <Plug>LongmovegL :<C-U>call <SID>gL(v:count,"")<CR>
 vnoremap <silent> <script> <Plug>LongmoveVisualgL :<C-U>call <SID>gL(v:count,"gv")<CR>
+onoremap <silent> <script> <Plug>LongmoveOperatorgL :<C-U>call <SID>gL(v:count,"")<CR>
 
 function! s:gH(count, vis)
   if a:vis ==# "gv"

@@ -38,9 +38,9 @@ vnoremap <silent> <script> <Plug>LongmoveVisualgH :<C-U>call <SID>gH(v:count,"gv
 " omap <silent> <script> <Plug>LongmoveOperatorgH :<C-U>normal VgH<CR>
 onoremap <silent> <script> <Plug>LongmoveOperatorgH :<C-U>call <SID>gH(v:count,"")<CR>
 
-nnoremap <silent> <script> <Plug>LongmovegM :<C-U>call <SID>gM(v:count,"")<CR>
-vnoremap <silent> <script> <Plug>LongmoveVisualgM :<C-U>call <SID>gM(v:count,"gv")<CR>
-onoremap <silent> <script> <Plug>LongmoveOperatorgM :<C-U>call <SID>gM(v:count,"")<CR>
+nnoremap <silent> <script> <Plug>LongmovegM :<C-U>call <SID>gM("")<CR>
+vnoremap <silent> <script> <Plug>LongmoveVisualgM :<C-U>call <SID>gM("gv")<CR>
+onoremap <silent> <script> <Plug>LongmoveOperatorgM :<C-U>call <SID>gM("")<CR>
 
 nnoremap <silent> <script> <Plug>LongmovegL :<C-U>call <SID>gL(v:count,"")<CR>
 vnoremap <silent> <script> <Plug>LongmoveVisualgL :<C-U>call <SID>gL(v:count,"gv")<CR>

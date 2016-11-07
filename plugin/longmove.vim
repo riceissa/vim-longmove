@@ -30,7 +30,11 @@ nnoremap <silent> <script> <Plug>LongmovegL :<C-U>call <SID>gL("")<CR>
 vnoremap <silent> <script> <Plug>LongmoveVisualgL :<C-U>call <SID>gL("gv")<CR>
 
 function! s:gH(vis)
-  let l:amt = winline() - 1 - &scrolloff
+  if a:vis ==# "gv"
+    exe "normal! " . a:vis | let l:amt = winline() - 1 - &scrolloff
+  else
+    let l:amt = winline() - 1 - &scrolloff
+  endif
   let l:c = v:count - 1 - &scrolloff
   let l:c_max = winheight(0) - 2 * &scrolloff - 1
   let l:cmd = "normal! " . a:vis
@@ -56,7 +60,20 @@ function! s:gH(vis)
 endfunction
 
 function! s:gL(vis)
-  let l:amt = winheight(0) - winline() - &scrolloff
+  if a:vis ==# "gv"
+    " When you run :normal, Vim changes winline() to the cursor position at
+    " the start of the visual selection. This is different from the actual
+    " current cursor position if the actual cursor position was at the end of
+    " the visual selection. You can verify this by entering visual mode,
+    " moving to a different visual line, then calling
+    " :<C-U>echom winline()<CR>. Since Vim doesn't seem to provide a function
+    " to get the window line of the current cursor position, the only
+    " workaround I know of is to call gv to reselect the visual area and
+    " immediately check winline() in the same line.
+    exe "normal! " . a:vis | let l:amt = winheight(0) - winline() - &scrolloff
+  else
+    let l:amt = winheight(0) - winline() - &scrolloff
+  endif
   let l:c = v:count - 1 - &scrolloff
   let l:c_max = winheight(0) - 2 * &scrolloff - 1
   let l:cmd = "normal! " . a:vis
@@ -75,11 +92,17 @@ function! s:gL(vis)
     " exe ':normal! g^'
     let l:cmd .= 'g^'
   endif
+  " echom l:cmd
+  " echom "DEBUG" winheight(0) winline() &scrolloff
   exe l:cmd
 endfunction
 
 function! s:gM(vis)
-  let l:amt = (winheight(0)+1)/2 - winline()
+  if a:vis ==# "gv"
+    exe "normal! " . a:vis | let l:amt = (winheight(0)+1)/2 - winline()
+  else
+    let l:amt = (winheight(0)+1)/2 - winline()
+  endif
   let l:cmd = "normal! " . a:vis
   if l:amt > 0
     " Cursor is in the top half of window so go down.

@@ -25,9 +25,9 @@ endif
 nnoremap <silent> <script> <Plug>LongmovegH :<C-U>call <SID>gH("")<CR>
 vnoremap <silent> <script> <Plug>LongmoveVisualgH :<C-U>call <SID>gH("gv")<CR>
 nnoremap <silent> <script> <Plug>LongmovegM :<C-U>call <SID>gM("")<CR>
-vnoremap <silent> <script> <Plug>LongmovegVisualM :<C-U>call <SID>gM("gv")<CR>
+vnoremap <silent> <script> <Plug>LongmoveVisualgM :<C-U>call <SID>gM("gv")<CR>
 nnoremap <silent> <script> <Plug>LongmovegL :<C-U>call <SID>gL("")<CR>
-vnoremap <silent> <script> <Plug>LongmovegVisualL :<C-U>call <SID>gL("gv")<CR>
+vnoremap <silent> <script> <Plug>LongmoveVisualgL :<C-U>call <SID>gL("gv")<CR>
 
 function! s:gH(vis)
   let l:amt = winline() - 1 - &scrolloff

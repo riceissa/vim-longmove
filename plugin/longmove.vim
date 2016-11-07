@@ -35,7 +35,7 @@ function! s:gH(vis)
     " the start of the visual selection. This is different from the actual
     " current cursor position if the actual cursor position was at the end of
     " the visual selection. You can verify this by entering visual mode,
-    " moving to a different visual line, then calling
+    " moving to a different visual line, then typing
     " :<C-U>echom winline()<CR>. Since Vim doesn't seem to provide a function
     " to get the window line of the current cursor position, the only
     " workaround I know of is to call gv to reselect the visual area and

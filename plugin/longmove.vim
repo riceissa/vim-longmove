@@ -16,17 +16,12 @@ if !hasmapto("<Plug>LongmovegL", "n") && "" == mapcheck("gL","n")
   nmap gL <Plug>LongmovegL
 endif
 
-nnoremap <silent> <script> <Plug>LongmovegH :<C-U>call <SID>gH(0)<CR>
-vnoremap <silent> <script> <Plug>LongmoveVisualgH :<C-U>call <SID>gH(1)<CR>
+nnoremap <silent> <script> <Plug>LongmovegH :<C-U>call <SID>gH("")<CR>
+vnoremap <silent> <script> <Plug>LongmoveVisualgH :<C-U>call <SID>gH("gv")<CR>
 nnoremap <silent> <script> <Plug>LongmovegM :<C-U>call <SID>gM()<CR>
 nnoremap <silent> <script> <Plug>LongmovegL :<C-U>call <SID>gL()<CR>
 
 function! s:gH(vis)
-  if a:vis
-    let a:vis = "gv"
-  else
-    let a:vis = ""
-  endif
   let l:amt = winline() - 1 - &scrolloff
   let l:c = v:count - 1 - &scrolloff
   let l:c_max = winheight(0) - 2 * &scrolloff - 1

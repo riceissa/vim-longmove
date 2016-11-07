@@ -22,14 +22,14 @@ if !hasmapto("<Plug>LongmoveVisualgL", "v") && "" == mapcheck("gL","v")
   vmap gL <Plug>LongmoveVisualgL
 endif
 
-nnoremap <silent> <script> <Plug>LongmovegH :<C-U>call <SID>gH("")<CR>
-vnoremap <silent> <script> <Plug>LongmoveVisualgH :<C-U>call <SID>gH("gv")<CR>
-nnoremap <silent> <script> <Plug>LongmovegM :<C-U>call <SID>gM("")<CR>
-vnoremap <silent> <script> <Plug>LongmoveVisualgM :<C-U>call <SID>gM("gv")<CR>
-nnoremap <silent> <script> <Plug>LongmovegL :<C-U>call <SID>gL("")<CR>
-vnoremap <silent> <script> <Plug>LongmoveVisualgL :<C-U>call <SID>gL("gv")<CR>
+nnoremap <silent> <script> <Plug>LongmovegH :<C-U>call <SID>gH(v:count,"")<CR>
+vnoremap <silent> <script> <Plug>LongmoveVisualgH :<C-U>call <SID>gH(v:count,"gv")<CR>
+nnoremap <silent> <script> <Plug>LongmovegM :<C-U>call <SID>gM(v:count,"")<CR>
+vnoremap <silent> <script> <Plug>LongmoveVisualgM :<C-U>call <SID>gM(v:count,"gv")<CR>
+nnoremap <silent> <script> <Plug>LongmovegL :<C-U>call <SID>gL(v:count,"")<CR>
+vnoremap <silent> <script> <Plug>LongmoveVisualgL :<C-U>call <SID>gL(v:count,"gv")<CR>
 
-function! s:gH(vis)
+function! s:gH(count, vis)
   if a:vis ==# "gv"
     " When you run :normal!, Vim changes winline() to the cursor position at
     " the start of the visual selection. This is different from the actual
@@ -46,7 +46,7 @@ function! s:gH(vis)
   else
     let l:amt = winline() - 1 - &scrolloff
   endif
-  let l:c = v:count - 1 - &scrolloff
+  let l:c = a:count - 1 - &scrolloff
   let l:c_max = winheight(0) - 2 * &scrolloff - 1
   let l:cmd = "normal! " . a:vis
   " If the count is too large, keep cursor inside the window. This better
@@ -64,16 +64,17 @@ function! s:gH(vis)
   if &startofline
     let l:cmd .= 'g^'
   endif
+  echom l:cmd
   exe l:cmd
 endfunction
 
-function! s:gL(vis)
+function! s:gL(count, vis)
   if a:vis ==# "gv"
     exe "normal! " . a:vis | let l:amt = winheight(0) - winline() - &scrolloff
   else
     let l:amt = winheight(0) - winline() - &scrolloff
   endif
-  let l:c = v:count - 1 - &scrolloff
+  let l:c = a:count - 1 - &scrolloff
   let l:c_max = winheight(0) - 2 * &scrolloff - 1
   let l:cmd = "normal! " . a:vis
   if l:c > l:c_max

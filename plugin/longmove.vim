@@ -12,14 +12,22 @@ endif
 if !hasmapto("<Plug>LongmovegM", "n") && "" == mapcheck("gM","n")
   nmap gM <Plug>LongmovegM
 endif
+if !hasmapto("<Plug>LongmoveVisualgM", "v") && "" == mapcheck("gM","v")
+  vmap gM <Plug>LongmoveVisualgM
+endif
 if !hasmapto("<Plug>LongmovegL", "n") && "" == mapcheck("gL","n")
   nmap gL <Plug>LongmovegL
+endif
+if !hasmapto("<Plug>LongmoveVisualgL", "v") && "" == mapcheck("gL","v")
+  vmap gL <Plug>LongmoveVisualgL
 endif
 
 nnoremap <silent> <script> <Plug>LongmovegH :<C-U>call <SID>gH("")<CR>
 vnoremap <silent> <script> <Plug>LongmoveVisualgH :<C-U>call <SID>gH("gv")<CR>
-nnoremap <silent> <script> <Plug>LongmovegM :<C-U>call <SID>gM()<CR>
-nnoremap <silent> <script> <Plug>LongmovegL :<C-U>call <SID>gL()<CR>
+nnoremap <silent> <script> <Plug>LongmovegM :<C-U>call <SID>gM("")<CR>
+vnoremap <silent> <script> <Plug>LongmovegVisualM :<C-U>call <SID>gM("gv")<CR>
+nnoremap <silent> <script> <Plug>LongmovegL :<C-U>call <SID>gL("")<CR>
+vnoremap <silent> <script> <Plug>LongmovegVisualL :<C-U>call <SID>gL("gv")<CR>
 
 function! s:gH(vis)
   let l:amt = winline() - 1 - &scrolloff
@@ -47,34 +55,44 @@ function! s:gH(vis)
   exe l:cmd
 endfunction
 
-function! s:gL()
+function! s:gL(vis)
   let l:amt = winheight(0) - winline() - &scrolloff
   let l:c = v:count - 1 - &scrolloff
   let l:c_max = winheight(0) - 2 * &scrolloff - 1
+  let l:cmd = "normal! " . a:vis
   if l:c > l:c_max
     let l:c = l:c_max
   endif
   if l:amt > 0
-    exe ':normal! ' . l:amt . 'gj'
+    " exe ':normal! ' . l:amt . 'gj'
+    let l:cmd .= l:amt . 'gj'
   endif
   if l:c > 0
-    exe ':normal! ' . l:c . 'gk'
+    " exe ':normal! ' . l:c . 'gk'
+    let l:cmd .= l:c . 'gk'
   endif
   if &startofline
-    exe ':normal! g^'
+    " exe ':normal! g^'
+    let l:cmd .= 'g^'
   endif
+  exe l:cmd
 endfunction
 
-function! s:gM()
+function! s:gM(vis)
   let l:amt = (winheight(0)+1)/2 - winline()
+  let l:cmd = "normal! " . a:vis
   if l:amt > 0
     " Cursor is in the top half of window so go down.
-    exe ':normal! ' . abs(l:amt) . 'gj'
+    " exe ':normal! ' . abs(l:amt) . 'gj'
+    let l:cmd .= abs(l:amt) . 'gj'
   elseif l:amt < 0
     " Cursor is in the bottom half of window so go down.
-    exe ':normal! ' . abs(l:amt) . 'gk'
+    " exe ':normal! ' . abs(l:amt) . 'gk'
+    let l:cmd .= abs(l:amt) . 'gk'
   endif
   if &startofline
-    exe ':normal! g^'
+    " exe ':normal! g^'
+    let l:cmd .= 'g^'
   endif
+  exe l:cmd
 endfunction

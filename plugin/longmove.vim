@@ -34,15 +34,15 @@ function! s:gH(vis)
   endif
   if l:amt > 0
     " exe "normal! " . a:vis . l:amt . 'gk'
-    l:cmd .= l:amt . 'gk'
+    let l:cmd .= l:amt . 'gk'
   endif
   if l:c > 0
     " exe "normal! " . a:vis . l:c . 'gj'
-    l:cmd .= l:c . 'gj'
+    let l:cmd .= l:c . 'gj'
   endif
   if &startofline
     " exe "normal! " . a:vis . 'g^'
-    l:cmd .= 'g^'
+    let l:cmd .= 'g^'
   endif
   exe l:cmd
 endfunction

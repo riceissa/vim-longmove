@@ -9,7 +9,7 @@ gH                      To screen line [count] from top of window (default:
                         Unlike with |H|, in |Operator-pending-mode| this
                         movement acts |characterwise| rather than |linewise|,
                         as it wouldn't make sense to act linewise in truly
-                        long lines.
+                        long lines. |exclusive| motion.
 
                                                 *longmove-gM*
 gM                      To middle screen line of window, on the first non-blank
@@ -17,7 +17,7 @@ gM                      To middle screen line of window, on the first non-blank
                         Unlike with |M|, in |Operator-pending-mode| this
                         movement acts |characterwise| rather than |linewise|,
                         as it wouldn't make sense to act linewise in truly
-                        long lines.
+                        long lines. |exclusive| motion.
 
                                                 *longmove-gL*
 gL                      To screen line [count] from bottom of window (default:
@@ -26,6 +26,6 @@ gL                      To screen line [count] from bottom of window (default:
                         Unlike with |L|, in |Operator-pending-mode| this
                         movement acts |characterwise| rather than |linewise|,
                         as it wouldn't make sense to act linewise in truly
-                        long lines.
+                        long lines. |exclusive| motion.
 
  vim:tw=78:et:ts=8:ft=help:norl:

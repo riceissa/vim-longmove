@@ -7,7 +7,7 @@ if !hasmapto("<Plug>LongmovegH", "n") && "" == mapcheck("gH","n")
   nmap gH <Plug>LongmovegH
 endif
 if !hasmapto("<Plug>LongmoveVisualgH", "v") && "" == mapcheck("gH","v")
-  nmap gH <Plug>LongmoveVisualgH
+  vmap gH <Plug>LongmoveVisualgH
 endif
 if !hasmapto("<Plug>LongmovegM", "n") && "" == mapcheck("gM","n")
   nmap gM <Plug>LongmovegM

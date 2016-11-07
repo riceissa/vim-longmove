@@ -6,6 +6,9 @@ let g:loaded_longmove = 1
 if !hasmapto("<Plug>LongmovegH", "n") && "" == mapcheck("gH","n")
   nmap gH <Plug>LongmovegH
 endif
+if !hasmapto("<Plug>LongmoveVisualgH", "v") && "" == mapcheck("gH","v")
+  nmap gH <Plug>LongmoveVisualgH
+endif
 if !hasmapto("<Plug>LongmovegM", "n") && "" == mapcheck("gM","n")
   nmap gM <Plug>LongmovegM
 endif
@@ -13,8 +16,8 @@ if !hasmapto("<Plug>LongmovegL", "n") && "" == mapcheck("gL","n")
   nmap gL <Plug>LongmovegL
 endif
 
-nnoremap <silent> <script> <Plug>LongmovegH :<C-U>call <SID>gH('')<CR>
-vnoremap <silent> <script> <Plug>LongmovegH :<C-U>call <SID>gH('')<CR>
+nnoremap <silent> <script> <Plug>LongmovegH :<C-U>call <SID>gH(0)<CR>
+vnoremap <silent> <script> <Plug>LongmoveVisualgH :<C-U>call <SID>gH(1)<CR>
 nnoremap <silent> <script> <Plug>LongmovegM :<C-U>call <SID>gM()<CR>
 nnoremap <silent> <script> <Plug>LongmovegL :<C-U>call <SID>gL()<CR>
 

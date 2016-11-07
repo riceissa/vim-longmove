@@ -4,8 +4,8 @@ Move more easily in buffers with long lines.
 
 ## Features
 
-Currently, the plugin provides the maps `gH`, `gM`, and `gL` that work
-analogously to Vim's `H`, `M`, and `L`.
+Currently, the plugin provides the maps `gH`, `gM`, and `gL` in normal and
+visual modes that work analogously to Vim's `H`, `M`, and `L`.
 
 ## Installation
 

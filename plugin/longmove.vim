@@ -13,11 +13,17 @@ if !hasmapto("<Plug>LongmovegL", "n") && "" == mapcheck("gL","n")
   nmap gL <Plug>LongmovegL
 endif
 
-nnoremap <silent> <script> <Plug>LongmovegH :<C-U>call <SID>gH()<CR>
+nnoremap <silent> <script> <Plug>LongmovegH :<C-U>call <SID>gH('')<CR>
+vnoremap <silent> <script> <Plug>LongmovegH :<C-U>call <SID>gH('')<CR>
 nnoremap <silent> <script> <Plug>LongmovegM :<C-U>call <SID>gM()<CR>
 nnoremap <silent> <script> <Plug>LongmovegL :<C-U>call <SID>gL()<CR>
 
-function! s:gH()
+function! s:gH(vis)
+  if a:vis
+    let a:vis = "gv"
+  else
+    let a:vis = ""
+  endif
   let l:amt = winline() - 1 - &scrolloff
   let l:c = v:count - 1 - &scrolloff
   let l:c_max = winheight(0) - 2 * &scrolloff - 1
@@ -28,13 +34,13 @@ function! s:gH()
     let l:c = l:c_max
   endif
   if l:amt > 0
-    exe ':normal! ' . l:amt . 'gk'
+    exe ':normal! ' . a:vis . l:amt . 'gk'
   endif
   if l:c > 0
-    exe ':normal! ' . l:c . 'gj'
+    exe ':normal! ' . a:vis . l:c . 'gj'
   endif
   if &startofline
-    exe ':normal! g^'
+    exe ':normal! ' . a:vis . 'g^'
   endif
 endfunction
 

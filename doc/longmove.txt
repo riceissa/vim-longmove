@@ -6,14 +6,26 @@ MAPPINGS                                        *longmove-mappings*
 gH                      To screen line [count] from top of window (default:
                         first screen line on the window) on the first non-blank
                         character. Respects 'startofline' and 'scrolloff'.
+                        Unlike with |H|, in |Operator-pending-mode| this
+                        movement acts |characterwise| rather than |linewise|,
+                        as it wouldn't make sense to act linewise in truly
+                        long lines.
 
                                                 *longmove-gM*
 gM                      To middle screen line of window, on the first non-blank
                         character. Respects 'startofline'.
+                        Unlike with |M|, in |Operator-pending-mode| this
+                        movement acts |characterwise| rather than |linewise|,
+                        as it wouldn't make sense to act linewise in truly
+                        long lines.
 
                                                 *longmove-gL*
 gL                      To screen line [count] from bottom of window (default:
                         last screen line on the window) on the first non-blank
                         character. Respects 'startofline' and 'scrolloff'.
+                        Unlike with |L|, in |Operator-pending-mode| this
+                        movement acts |characterwise| rather than |linewise|,
+                        as it wouldn't make sense to act linewise in truly
+                        long lines.
 
  vim:tw=78:et:ts=8:ft=help:norl:

@@ -1,0 +1,6 @@
+Doing something like `0vgLgjgjgjgMgL` on a really long line gets the final
+position wrong. As far as I can tell, this is because of Vim's handling of
+`gv` when the initial position is hidden and you're on a really long line.
+
+I don't think there's a good way to go about fixing this, because we're
+reaching the limits of what Vim can do to handle long lines.
